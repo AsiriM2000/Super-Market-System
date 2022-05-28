@@ -42,7 +42,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
         }
 
         for (OrderDetailDTO detail : dto.getOrderDetails()) {
-            boolean save1 = orderDetailsDAO.save(new OrderDetails(detail.getOrderId(), detail.getItemCode(), detail.getOrderQty(), detail.getUnitPrice()));
+            boolean save1 = orderDetailsDAO.save(new OrderDetails(detail.getOrderId(), detail.getItemCode(), detail.getOrderQty(), detail.getUnitPrice(),detail.getTotal()));
             if (!save1) {
                 connection.rollback();
                 connection.setAutoCommit(true);
@@ -78,13 +78,8 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
     }
 
     @Override
-    public boolean checkItemIsAvailable(String code) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
-    @Override
-    public boolean checkCustomerIsAvailable(String id) throws SQLException, ClassNotFoundException {
-        return false;
+    public boolean checkOrderId(String id) throws SQLException, ClassNotFoundException {
+        return orderDAO.exist(id);
     }
 
     @Override

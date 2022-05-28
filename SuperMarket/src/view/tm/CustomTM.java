@@ -10,17 +10,19 @@ public class CustomTM {
     private String ItemCode;
     private int OrderQty;
     private BigDecimal unitPrice;
+    private BigDecimal total;
 
     public CustomTM() {
     }
 
-    public CustomTM(String orderId, LocalDate orderDate, String custId, String itemCode, int orderQty, BigDecimal unitPrice) {
+    public CustomTM(String orderId, LocalDate orderDate, String custId, String itemCode, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.OrderId = orderId;
         this.OrderDate = orderDate;
         this.CustId = custId;
         this.ItemCode = itemCode;
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
+        this.total = total;
     }
 
     public String getOrderId() {
@@ -71,6 +73,14 @@ public class CustomTM {
         this.unitPrice = unitPrice;
     }
 
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "CustomDTO{" +
@@ -80,6 +90,7 @@ public class CustomTM {
                 ", ItemCode='" + ItemCode + '\'' +
                 ", OrderQty=" + OrderQty +
                 ", unitPrice=" + unitPrice +
+                ", total=" + total +
                 '}';
     }
 }

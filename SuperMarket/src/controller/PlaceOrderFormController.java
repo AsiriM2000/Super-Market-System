@@ -203,7 +203,7 @@ public class PlaceOrderFormController {
     }
     public void PlaceOrderOnAction(ActionEvent actionEvent) {
         boolean b = saveOrder(orderId, LocalDate.now(), cmbCustomer.getValue(),
-                tblOrderDetail.getItems().stream().map(tm -> new OrderDetailDTO(orderId, tm.getItemCode(), tm.getOrderQty(), tm.getUnitPrice())).collect(Collectors.toList()));
+                tblOrderDetail.getItems().stream().map(tm -> new OrderDetailDTO(orderId, tm.getItemCode(), tm.getOrderQty(), tm.getUnitPrice(),tm.getTotal())).collect(Collectors.toList()));
         if (b) {
             new Alert(Alert.AlertType.INFORMATION, "Order placed successfully").show();
         } else {

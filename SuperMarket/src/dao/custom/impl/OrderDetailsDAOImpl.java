@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class OrderDetailsDAOImpl implements OrderDetailsDAO {
     @Override
     public boolean save(OrderDetails entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.executeUpdate("INSERT INTO OrderDetails VALUES (?,?,?,?)",entity.getOrderId(), entity.getItemCode(),entity.getOrderQty(), entity.getUnitPrice());
+        return SQLUtil.executeUpdate("INSERT INTO OrderDetails VALUES (?,?,?,?,?)",entity.getOrderId(), entity.getItemCode(),entity.getOrderQty(), entity.getUnitPrice(),entity.getTotal());
     }
 
     @Override

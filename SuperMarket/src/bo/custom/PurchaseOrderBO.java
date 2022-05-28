@@ -15,9 +15,7 @@ public interface PurchaseOrderBO extends SuperBO {
 
     ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException;
 
-    boolean checkItemIsAvailable(String code) throws SQLException, ClassNotFoundException;
-
-    boolean checkCustomerIsAvailable(String id) throws SQLException, ClassNotFoundException;
+    boolean checkOrderId(String id) throws SQLException, ClassNotFoundException;
 
     String generateNewOrderID() throws SQLException, ClassNotFoundException;
 

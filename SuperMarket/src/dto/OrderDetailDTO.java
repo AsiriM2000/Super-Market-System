@@ -7,15 +7,14 @@ public class OrderDetailDTO {
     private String ItemCode;
     private int OrderQty;
     private BigDecimal unitPrice;
+    private BigDecimal total;
 
-    public OrderDetailDTO() {
-    }
-
-    public OrderDetailDTO(String orderId, String itemCode, int orderQty, BigDecimal unitPrice) {
+    public OrderDetailDTO(String orderId, String itemCode, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.OrderId = orderId;
         this.ItemCode = itemCode;
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
+        this.total = total;
     }
 
     public String getOrderId() {
@@ -50,6 +49,14 @@ public class OrderDetailDTO {
         this.unitPrice = unitPrice;
     }
 
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
     @Override
     public String toString() {
         return "OrderDetailDTO{" +
@@ -57,6 +64,7 @@ public class OrderDetailDTO {
                 ", ItemCode='" + ItemCode + '\'' +
                 ", OrderQty=" + OrderQty +
                 ", unitPrice=" + unitPrice +
+                ", total=" + total +
                 '}';
     }
 }

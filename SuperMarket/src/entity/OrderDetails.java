@@ -7,15 +7,17 @@ public class OrderDetails {
     private String ItemCode;
     private int OrderQty;
     private BigDecimal unitPrice;
+    private BigDecimal total;
 
     public OrderDetails() {
     }
 
-    public OrderDetails(String orderId, String itemCode, int orderQty, BigDecimal unitPrice) {
+    public OrderDetails(String orderId, String itemCode, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.OrderId = orderId;
         this.ItemCode = itemCode;
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
+        this.total = total;
     }
 
     public String getOrderId() {
@@ -48,5 +50,13 @@ public class OrderDetails {
 
     public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
     }
 }
