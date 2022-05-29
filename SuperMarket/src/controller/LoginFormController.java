@@ -94,7 +94,7 @@ public class LoginFormController {
         String Username = txtUsername.getText();
         String Password = txtPassword.getText();
 
-        if (Username.equals("cashier") && Password.equals("2345")){
+        if (Username.equals("0") && Password.equals("0")){
             Image image = new Image("/view/assests/LoginImage/check.png");
 
             Notifications notifications = Notifications.create()
@@ -129,7 +129,7 @@ public class LoginFormController {
         String Username = txtUsernameAt.getText();
         String Password = txtPasswordAt.getText();
 
-        if (Username.equals("administrator") && Password.equals("1234")){
+        if (Username.equals("0") && Password.equals("0")){
             Image image = new Image("/view/assests/LoginImage/check.png");
 
             Notifications notifications = Notifications.create()

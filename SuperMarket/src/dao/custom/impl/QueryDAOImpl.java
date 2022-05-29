@@ -3,10 +3,12 @@ package dao.custom.impl;
 import dao.SQLUtil;
 import dao.custom.QueryDAO;
 import dto.CustomDTO;
+import entity.OrderDetails;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class QueryDAOImpl implements QueryDAO {
@@ -17,6 +19,16 @@ public class QueryDAOImpl implements QueryDAO {
             return new CustomDTO(rst.getString(1), LocalDate.parse(rst.getString(2)),rst.getString(3),rst.getString(4),rst.getInt(5),rst.getBigDecimal(6),rst.getBigDecimal(7));
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<OrderDetails> ShowMovableItem() throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 10 AND 100 GROUP BY ItemCode ORDER BY SUM(OrderQty) DESC ");
+        ArrayList<OrderDetails> all = new ArrayList<>();
+        while (rst.next()){
+            all.add(new OrderDetails(rst.getString(1),rst.getInt(2),rst.getString(3)));
+        }
+        return all;
     }
 
 }

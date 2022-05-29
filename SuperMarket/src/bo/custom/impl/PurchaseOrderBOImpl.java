@@ -42,7 +42,7 @@ public class PurchaseOrderBOImpl implements PurchaseOrderBO {
         }
 
         for (OrderDetailDTO detail : dto.getOrderDetails()) {
-            boolean save1 = orderDetailsDAO.save(new OrderDetails(detail.getOrderId(), detail.getItemCode(), detail.getOrderQty(), detail.getUnitPrice(),detail.getTotal()));
+            boolean save1 = orderDetailsDAO.save(new OrderDetails(detail.getOrderId(), detail.getItemCode(), detail.getDescription(),detail.getOrderQty(), detail.getUnitPrice(),detail.getTotal()));
             if (!save1) {
                 connection.rollback();
                 connection.setAutoCommit(true);

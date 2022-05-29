@@ -9,8 +9,7 @@ public class OrderDetailTM {
     private BigDecimal unitPrice;
     private BigDecimal total;
 
-    public OrderDetailTM() {
-    }
+    private String OrderId;
 
     public OrderDetailTM(String itemCode, String description, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.ItemCode = itemCode;
@@ -18,6 +17,12 @@ public class OrderDetailTM {
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
         this.total = total;
+    }
+
+    public OrderDetailTM(String ItemCode, int orderQty, String description) {
+        this.ItemCode = ItemCode;
+        this.OrderQty = orderQty;
+        this.description = description;
     }
 
     public String getItemCode() {

@@ -20,6 +20,9 @@ public class MainFormAdministratorController {
     public ImageView btnBack;
     public ImageView imgItem;
     public AnchorPane administratorAnchor;
+    public ImageView imgMovableItem;
+    public ImageView imgLeastItem;
+    public ImageView imgIncome;
 
     public void initialize(){
         btnBack.setOnMouseClicked(event -> {
@@ -67,6 +70,9 @@ public class MainFormAdministratorController {
                 case "imgItem" :
                     setUi("manage-item-form");
                     break;
+                case "imgMovableItem" :
+                    setUi("most-movable-item");
+                    break;
             }
         }
     }
@@ -85,6 +91,18 @@ public class MainFormAdministratorController {
                 case "imgItem":
                     lblMenu.setText("Manage Items");
                     lblDescription.setText("Click to add, edit, delete, search or view items");
+                    break;
+                case "imgIncome":
+                    lblMenu.setText("Income Reports");
+                    lblDescription.setText("Click to view Daily,Monthly,Annual Income reports");
+                    break;
+                case "imgMovableItem":
+                    lblMenu.setText("Most Movable Items");
+                    lblDescription.setText("Click to view Movable Items");
+                    break;
+                case "imgLeastItem":
+                    lblMenu.setText("Least Movable Items");
+                    lblDescription.setText("Click to view Least Items");
                     break;
             }
 
