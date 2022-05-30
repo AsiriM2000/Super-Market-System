@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface QueryBO extends SuperBO {
     CustomDTO searchOrderByOrderID(String id)throws SQLException,ClassNotFoundException;
     ArrayList<OrderDetailDTO> getAllMovableItem()throws SQLException,ClassNotFoundException;
+    ArrayList<OrderDetailDTO> getAllLeastMovableItem()throws SQLException,ClassNotFoundException;
 }

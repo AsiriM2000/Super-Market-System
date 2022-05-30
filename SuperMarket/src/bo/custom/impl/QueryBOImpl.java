@@ -29,4 +29,14 @@ public class QueryBOImpl implements QueryBO {
         }
         return allMovableItem;
     }
+
+    @Override
+    public ArrayList<OrderDetailDTO> getAllLeastMovableItem() throws SQLException, ClassNotFoundException {
+        ArrayList<OrderDetails> all = queryDAO.ShowLeastMovableItem();
+        ArrayList<OrderDetailDTO> allLeastMovableItem = new ArrayList<>();
+        for (OrderDetails order : all){
+            allLeastMovableItem.add(new OrderDetailDTO(order.getItemCode(),order.getOrderQty(),order.getDescription()));
+        }
+        return allLeastMovableItem;
+    }
 }

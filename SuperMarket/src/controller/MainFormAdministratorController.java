@@ -73,6 +73,9 @@ public class MainFormAdministratorController {
                 case "imgMovableItem" :
                     setUi("most-movable-item");
                     break;
+                case "imgLeastItem" :
+                    setUi("least-movable-item");
+                    break;
             }
         }
     }

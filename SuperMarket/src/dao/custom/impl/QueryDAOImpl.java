@@ -23,7 +23,17 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public ArrayList<OrderDetails> ShowMovableItem() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 10 AND 100 GROUP BY ItemCode ORDER BY SUM(OrderQty) DESC ");
+        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 20 AND 100 GROUP BY ItemCode ORDER BY SUM(OrderQty) DESC ");
+        ArrayList<OrderDetails> all = new ArrayList<>();
+        while (rst.next()){
+            all.add(new OrderDetails(rst.getString(1),rst.getInt(2),rst.getString(3)));
+        }
+        return all;
+    }
+
+    @Override
+    public ArrayList<OrderDetails> ShowLeastMovableItem() throws SQLException, ClassNotFoundException {
+        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 1 AND 10 GROUP BY ItemCode ORDER BY SUM(OrderQty) ASC ");
         ArrayList<OrderDetails> all = new ArrayList<>();
         while (rst.next()){
             all.add(new OrderDetails(rst.getString(1),rst.getInt(2),rst.getString(3)));
