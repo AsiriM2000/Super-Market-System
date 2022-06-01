@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class OrderDetailDTO {
     private String OrderId;
     private String ItemCode;
-    private String description;
+    private String Description;
     private int OrderQty;
     private BigDecimal unitPrice;
     private BigDecimal total;
@@ -13,19 +13,18 @@ public class OrderDetailDTO {
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(String ItemCode,int orderQty, String description) {
-        this.ItemCode = ItemCode;
-        this.OrderQty = orderQty;
-        this.description = description;
-    }
-
-    public OrderDetailDTO(String orderId, String itemCode, String description, int orderQty, BigDecimal unitPrice, BigDecimal total) {
+    public OrderDetailDTO(String orderId, String itemCode, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.OrderId = orderId;
         this.ItemCode = itemCode;
-        this.description = description;
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
         this.total = total;
+    }
+
+    public OrderDetailDTO(String ItemCode,int orderQty,String Description) {
+        this.ItemCode = ItemCode;
+        this.OrderQty = orderQty;
+        this.Description = Description;
     }
 
     public String getOrderId() {
@@ -42,14 +41,6 @@ public class OrderDetailDTO {
 
     public void setItemCode(String itemCode) {
         this.ItemCode = itemCode;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getOrderQty() {
@@ -75,13 +66,19 @@ public class OrderDetailDTO {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
+    public String getDescription() {
+        return Description;
+    }
 
+    public void setDescription(String description){
+        this.Description = description;
+    }
     @Override
     public String toString() {
         return "OrderDetailDTO{" +
                 "OrderId='" + OrderId + '\'' +
                 ", ItemCode='" + ItemCode + '\'' +
-                ", description='" + description + '\'' +
+                ", Description='" + Description + '\'' +
                 ", OrderQty=" + OrderQty +
                 ", unitPrice=" + unitPrice +
                 ", total=" + total +

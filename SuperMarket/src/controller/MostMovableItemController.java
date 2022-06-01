@@ -24,7 +24,7 @@ public class MostMovableItemController {
     public void initialize(){
         tblMovableItem.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
         tblMovableItem.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("OrderQty"));
-        tblMovableItem.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("description"));
+        tblMovableItem.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("Description"));
 
         getAllMovableItem();
     }
@@ -35,10 +35,10 @@ public class MostMovableItemController {
     }
     public void getAllMovableItem(){
         try {
-           ArrayList<OrderDetailDTO> all =  queryBO.getAllMovableItem();
-           for (OrderDetailDTO dto : all){
-               tblMovableItem.getItems().add(new OrderDetailTM(dto.getItemCode(), dto.getOrderQty(), dto.getDescription()));
-           }
+            ArrayList<OrderDetailDTO>all = queryBO.getAllMovableItem();
+            for (OrderDetailDTO dto : all){
+                tblMovableItem.getItems().add(new OrderDetailTM(dto.getItemCode(),dto.getOrderQty(),dto.getDescription()));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

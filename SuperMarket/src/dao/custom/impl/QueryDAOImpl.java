@@ -3,6 +3,8 @@ package dao.custom.impl;
 import dao.SQLUtil;
 import dao.custom.QueryDAO;
 import dto.CustomDTO;
+import dto.IncomeDTO;
+import dto.OrderDetailDTO;
 import entity.OrderDetails;
 
 import java.sql.ResultSet;
@@ -23,22 +25,32 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public ArrayList<OrderDetails> ShowMovableItem() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 20 AND 100 GROUP BY ItemCode ORDER BY SUM(OrderQty) DESC ");
+        ResultSet rst = SQLUtil.executeQuery("SELECT Item.ItemCode,SUM(OrderQty),Item.Description FROM OrderDetails inner join Item on Item.ItemCode = OrderDetails.ItemCode WHERE OrderQty BETWEEN 20 AND 100 GROUP BY ItemCode ORDER BY SUM(OrderQty) DESC");
         ArrayList<OrderDetails> all = new ArrayList<>();
-        while (rst.next()){
+        while (rst.next()) {
             all.add(new OrderDetails(rst.getString(1),rst.getInt(2),rst.getString(3)));
         }
-        return all;
+        return  all;
     }
 
     @Override
     public ArrayList<OrderDetails> ShowLeastMovableItem() throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.executeQuery("SELECT ItemCode, SUM(OrderQty),Description FROM OrderDetails  WHERE OrderQty BETWEEN 1 AND 10 GROUP BY ItemCode ORDER BY SUM(OrderQty) ASC ");
+        ResultSet rst = SQLUtil.executeQuery("SELECT Item.ItemCode,SUM(OrderQty),Item.Description FROM OrderDetails inner join Item on Item.ItemCode = OrderDetails.ItemCode WHERE OrderQty BETWEEN 1 AND 10 GROUP BY ItemCode ORDER BY SUM(OrderQty) ASC");
         ArrayList<OrderDetails> all = new ArrayList<>();
-        while (rst.next()){
+        while (rst.next()) {
             all.add(new OrderDetails(rst.getString(1),rst.getInt(2),rst.getString(3)));
         }
-        return all;
+        return  all;
     }
+
+    @Override
+    public IncomeDTO dailyIncomeCheck(String date) throws SQLException, ClassNotFoundException {
+        ResultSet resultSet = SQLUtil.executeQuery("SELECT SUM(total) FROM `OrderDetails`INNER JOIN `Orders` on `Orders`.OrderId = `OrderDetails`.OrderId WHERE OrderDate = ?",date);
+        while (resultSet.next()){
+            return new IncomeDTO(resultSet.getBigDecimal(1));
+        }
+        return  null;
+    }
+
 
 }

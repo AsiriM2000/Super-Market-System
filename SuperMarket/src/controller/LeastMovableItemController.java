@@ -36,9 +36,9 @@ public class LeastMovableItemController {
 
     public void getAllLeastMovableItem(){
         try {
-            ArrayList<OrderDetailDTO> all = queryBO.getAllLeastMovableItem();
+            ArrayList<OrderDetailDTO>all = queryBO.getAllLeastMovableItem();
             for (OrderDetailDTO dto : all){
-                tblILeastItem.getItems().add(new OrderDetailTM(dto.getItemCode(),dto.getOrderQty(), dto.getDescription()));
+                tblILeastItem.getItems().add(new OrderDetailTM(dto.getItemCode(),dto.getOrderQty(),dto.getDescription()));
             }
         } catch (SQLException e) {
             e.printStackTrace();

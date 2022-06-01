@@ -5,6 +5,7 @@ import dao.DAOFactory;
 import dao.custom.QueryDAO;
 import dto.CustomDTO;
 import dto.CustomerDTO;
+import dto.IncomeDTO;
 import dto.OrderDetailDTO;
 import entity.Customer;
 import entity.OrderDetails;
@@ -23,20 +24,27 @@ public class QueryBOImpl implements QueryBO {
     @Override
     public ArrayList<OrderDetailDTO> getAllMovableItem() throws SQLException, ClassNotFoundException {
         ArrayList<OrderDetails> all = queryDAO.ShowMovableItem();
-        ArrayList<OrderDetailDTO> allMovableItem = new ArrayList<>();
-        for (OrderDetails order : all){
-            allMovableItem.add(new OrderDetailDTO(order.getItemCode(),order.getOrderQty(),order.getDescription()));
+        ArrayList<OrderDetailDTO> movableItem = new ArrayList<>();
+        for (OrderDetails o : all){
+            movableItem.add(new OrderDetailDTO(o.getItemCode(),o.getOrderQty(),o.getDescription()));
         }
-        return allMovableItem;
+        return movableItem;
     }
 
     @Override
     public ArrayList<OrderDetailDTO> getAllLeastMovableItem() throws SQLException, ClassNotFoundException {
         ArrayList<OrderDetails> all = queryDAO.ShowLeastMovableItem();
-        ArrayList<OrderDetailDTO> allLeastMovableItem = new ArrayList<>();
-        for (OrderDetails order : all){
-            allLeastMovableItem.add(new OrderDetailDTO(order.getItemCode(),order.getOrderQty(),order.getDescription()));
+        ArrayList<OrderDetailDTO> movableItem = new ArrayList<>();
+        for (OrderDetails o : all){
+            movableItem.add(new OrderDetailDTO(o.getItemCode(),o.getOrderQty(),o.getDescription()));
         }
-        return allLeastMovableItem;
+        return movableItem;
     }
+
+    @Override
+    public IncomeDTO getDailyIncome(String date) throws SQLException, ClassNotFoundException {
+        return queryDAO.dailyIncomeCheck(date);
+    }
+
+
 }

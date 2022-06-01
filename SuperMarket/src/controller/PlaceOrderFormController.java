@@ -203,7 +203,7 @@ public class PlaceOrderFormController {
     }
     public void PlaceOrderOnAction(ActionEvent actionEvent) {
         boolean b = saveOrder(orderId, LocalDate.now(), cmbCustomer.getValue(),
-                tblOrderDetail.getItems().stream().map(tm -> new OrderDetailDTO(orderId, tm.getItemCode(),tm.getDescription(), tm.getOrderQty(), tm.getUnitPrice(),tm.getTotal())).collect(Collectors.toList()));
+                tblOrderDetail.getItems().stream().map(tm -> new OrderDetailDTO(orderId, tm.getItemCode(), tm.getOrderQty(), tm.getUnitPrice(),tm.getTotal())).collect(Collectors.toList()));
         if (b) {
             new Alert(Alert.AlertType.INFORMATION, "Order placed successfully").show();
         } else {
@@ -221,9 +221,7 @@ public class PlaceOrderFormController {
 
     private boolean saveOrder(String orderId, LocalDate OrderDate, String CustId, List<OrderDetailDTO> orderDetails) {
         try {
-
             return purchaseOrderBO.purchaseOrder(new OrderDTO(orderId,OrderDate,CustId,orderDetails));
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

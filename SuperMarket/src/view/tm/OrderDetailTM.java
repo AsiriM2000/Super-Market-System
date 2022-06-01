@@ -4,16 +4,14 @@ import java.math.BigDecimal;
 
 public class OrderDetailTM {
     private String ItemCode;
-    private String description;
+    private String Description;
     private int OrderQty;
     private BigDecimal unitPrice;
     private BigDecimal total;
 
-    private String OrderId;
-
     public OrderDetailTM(String itemCode, String description, int orderQty, BigDecimal unitPrice, BigDecimal total) {
         this.ItemCode = itemCode;
-        this.description = description;
+        this.Description = description;
         this.OrderQty = orderQty;
         this.unitPrice = unitPrice;
         this.total = total;
@@ -22,7 +20,7 @@ public class OrderDetailTM {
     public OrderDetailTM(String ItemCode, int orderQty, String description) {
         this.ItemCode = ItemCode;
         this.OrderQty = orderQty;
-        this.description = description;
+        this.Description = description;
     }
 
     public String getItemCode() {
@@ -34,11 +32,11 @@ public class OrderDetailTM {
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
 
     public int getOrderQty() {
@@ -69,7 +67,7 @@ public class OrderDetailTM {
     public String toString() {
         return "OrderDetailTM{" +
                 "ItemCode='" + ItemCode + '\'' +
-                ", description='" + description + '\'' +
+                ", Description='" + Description + '\'' +
                 ", OrderQty=" + OrderQty +
                 ", unitPrice=" + unitPrice +
                 ", total=" + total +

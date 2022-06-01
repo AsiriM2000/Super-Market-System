@@ -70,6 +70,9 @@ public class MainFormAdministratorController {
                 case "imgItem" :
                     setUi("manage-item-form");
                     break;
+                case "imgIncome" :
+                    setUi("income-report");
+                    break;
                 case "imgMovableItem" :
                     setUi("most-movable-item");
                     break;
