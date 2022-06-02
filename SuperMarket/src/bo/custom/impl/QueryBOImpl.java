@@ -46,5 +46,14 @@ public class QueryBOImpl implements QueryBO {
         return queryDAO.dailyIncomeCheck(date);
     }
 
+    @Override
+    public ArrayList<IncomeDTO> getMonthlyIncome() throws SQLException, ClassNotFoundException {
+       return queryDAO.monthlyIncomeCheck();
+    }
+
+    @Override
+    public ArrayList<IncomeDTO> getAnnualIncome() throws SQLException, ClassNotFoundException {
+        return queryDAO.annualIncomeCheck();
+    }
 
 }

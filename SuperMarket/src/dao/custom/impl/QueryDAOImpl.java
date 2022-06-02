@@ -52,5 +52,25 @@ public class QueryDAOImpl implements QueryDAO {
         return  null;
     }
 
+    @Override
+    public ArrayList<IncomeDTO> monthlyIncomeCheck() throws SQLException, ClassNotFoundException {
+        ResultSet set = SQLUtil.executeQuery("SELECT YEAR(o.OrderDate) AS Year,MONTH(o.OrderDate) AS Month,SUM(Od.total) AS Total FROM Orders o inner join OrderDetails Od on o.OrderId = Od.OrderId GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate) ");
+        ArrayList<IncomeDTO> all = new ArrayList<>();
+        while (set.next()){
+            all.add(new IncomeDTO(set.getString(1),set.getString(2),set.getBigDecimal(3)));
+        }
+        return all;
+    }
+
+    @Override
+    public ArrayList<IncomeDTO> annualIncomeCheck() throws SQLException, ClassNotFoundException {
+        ResultSet set = SQLUtil.executeQuery("SELECT YEAR(o.OrderDate)AS Year,SUM(Od.total)AS Total FROM Orders o inner join OrderDetails Od on o.OrderId = Od.OrderId GROUP BY YEAR(o.OrderDate)");
+        ArrayList<IncomeDTO> all = new ArrayList<>();
+        while (set.next()){
+            all.add(new IncomeDTO(set.getString(1),set.getBigDecimal(2)));
+        }
+        return all;
+    }
+
 
 }

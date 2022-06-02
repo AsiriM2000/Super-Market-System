@@ -13,4 +13,6 @@ public interface QueryBO extends SuperBO {
     ArrayList<OrderDetailDTO> getAllMovableItem()throws SQLException,ClassNotFoundException;
     ArrayList<OrderDetailDTO> getAllLeastMovableItem()throws SQLException,ClassNotFoundException;
     IncomeDTO getDailyIncome(String date) throws SQLException,ClassNotFoundException;
+    ArrayList<IncomeDTO> getMonthlyIncome() throws SQLException,ClassNotFoundException;
+    ArrayList<IncomeDTO> getAnnualIncome() throws SQLException,ClassNotFoundException;
 }

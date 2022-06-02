@@ -17,6 +17,7 @@ public class OrderDetails {
         this.unitPrice = unitPrice;
         this.total = total;
     }
+
     public OrderDetails(String ItemCode, int orderQty, String Description) {
         this.ItemCode = ItemCode;
         this.OrderQty = orderQty;
@@ -67,7 +68,7 @@ public class OrderDetails {
         return Description;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.Description = description;
     }
 }
